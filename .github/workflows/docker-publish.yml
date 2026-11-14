@@ -37,5 +37,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:sha-${{ github.sha }}
+            ghcr.io/serys-frontend:latest
+            ghcr.io/serys-frontend:sha-${{ github.sha }}
