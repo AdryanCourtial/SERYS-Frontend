@@ -4,7 +4,7 @@ import { connection } from "next/server";
 async function RuntimeContent() {
   await connection();
 
-  const testEnv = process.env.TEST_ENV ?? "Non définie";
+  const testEnv = process.env.NEXT_PUBLIC_TEST_ENV ?? "Non définie";
 
   return <p>Variable : {testEnv}</p>;
 }
