@@ -1,12 +1,22 @@
+import { Suspense } from "react";
 import { connection } from "next/server";
 
-export default async function Home() {
+async function RuntimeContent() {
+  await connection();
 
-  await connection()
-  
+  const testEnv = process.env.TEST_ENV ?? "Non définie";
+
+  return <p>Variable : {testEnv}</p>;
+}
+
+export default function Page() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-        Test de la variable env via le docker : TEST : {process.env.NEXT_PUBLIC_TEST_ENV}
-    </div>
+    <main>
+      <h1>SERYS</h1>
+
+      <Suspense fallback={<p>Chargement...</p>}>
+        <RuntimeContent />
+      </Suspense>
+    </main>
   );
 }
